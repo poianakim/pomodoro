@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 
 const App = () => {
 
-  const [breakTime, setBreakTime] = useState(5);
+  const [breakTime, setBreakTime] = useState(1);
   const [sessionTime, setSessionTime] = useState(1);
   const [timerType, setTimerType] = useState("SESSION");
   const [timeLeft, setTimeLeft] = useState(sessionTime * 60);
@@ -41,24 +41,23 @@ const App = () => {
     if (timeLeft > 0) {
       setTimeLeft(timeLeft => timeLeft - 1)
     } else if (timeLeft === 0 && timerType === "SESSION") {
-      console.log(timerType)
-      buzzer()
       setTimeLeft(breakTime * 60)
       setTimerType("BREAK")
-    } else if (timeLeft === 0 && timerType === "BREAK") {
       buzzer()
+    } else if (timeLeft === 0 && timerType === "BREAK") {
       setTimeLeft(sessionTime * 60)
       setTimerType("SESSION")
+      buzzer()
     }
   }
   const startTimer = () => {
     console.log(timerType)
-    starter.current =  setInterval(changeTime, 100)
     setPause(false);
+    starter.current =  setInterval(changeTime, 100)
   }
     const stopTimer = () => {
-    clearInterval(starter.current)
     setPause(true)
+    clearInterval(starter.current)
   }
   const onResetClick = () => {
     stopTimer()
