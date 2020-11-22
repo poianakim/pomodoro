@@ -7,11 +7,11 @@ const App = () => {
   const [timeLeft, setTimeLeft] = useState(sessionTime * 60);
   const [pause, setPause] = useState(true);
   const starter = useRef(null);
-  
+
   const changeTime = () => {
     if (timeLeft > 0) {
       setTimeLeft((timeLeft) => timeLeft - 1);
-    } 
+    }
     if (timeLeft === 0) {
       if (timerType === "SESSION") {
         console.log(timeLeft);
@@ -26,10 +26,10 @@ const App = () => {
     }
   };
   useEffect(() => {
-    if(!pause){
+    if (!pause) {
       const interval = setInterval(changeTime, 1000)
       return () => clearInterval(interval)
-          }
+    }
   })
   const onBreakDecreClick = () => {
     if (breakTime > 0) {
@@ -101,26 +101,28 @@ const App = () => {
     return minutes + ":" + seconds;
   };
   return (
-    <div id="clock">
+    <div className="container" id="clock">
       <h1>🍅Pomodoro Clock🍅</h1>
-      <div>
-        <h5>BREAK LENGTH</h5>
-        <input onClick={onBreakDecreClick} type="button" value="-" />
-        <h4>{breakTime}</h4>
-        <input onClick={onBreakIncreClick} type="button" value="+" />
-      </div>
-      <div>
-        <h5>SESSION LENGTH</h5>
-        <input onClick={onSessDecreClick} type="button" value="-" />
-        <h4>{sessionTime}</h4>
-        <input onClick={onSessIncreClick} type="button" value="+" />
+      <div className="row">
+        <div className="col-md-6">
+          <h2>BREAK LENGTH</h2>
+          <input onClick={onBreakDecreClick} type="button" value="-" />
+          <h3>{breakTime}</h3>
+          <input onClick={onBreakIncreClick} type="button" value="+" />
+        </div>
+        <div className="col-md-6">
+          <h2>SESSION LENGTH</h2>
+          <input onClick={onSessDecreClick} type="button" value="-" />
+          <h3>{sessionTime}</h3>
+          <input onClick={onSessIncreClick} type="button" value="+" />
+        </div>
       </div>
       <div className="session-section">
         <div>
-          <h3>{timerType}</h3>
-          <h4>{toMMSS(timeLeft)}</h4>
+          <h2>{timerType}</h2>
+          <h1>{toMMSS(timeLeft)}</h1>
           <button onClick={onChangePause} id="start-pause">
-            {pause ? "START" : "PAUSE"}
+            {pause ? " START " : " PAUSE "}
           </button>
           <button onClick={onResetClick} id="reset">
             RESET
