@@ -5,13 +5,22 @@ body{
     font-family: monospace;
   }
 .container {
-    align-items: center;
     border: solid 1px white;
     border-radius: 20%;
     padding: 10px;
     width: 500px;
-    height: 600px;
+    height: 500px;
     background-color: white;
+    margin-top: 10vh;
+}
+.length {
+  padding-left: 14px;
+  padding: 10px;
+  padding-top: 40px;
+}
+.length-control{
+  display: flex;
+  padding-left: 45px;
 }
   #App{
     background-color: rgba( 255, 255, 255, 0.5 );
@@ -23,7 +32,9 @@ body{
   h1{
     text-align: center;
     font-weight: bolder;
-    font-size: 30px;
+    font-size: 40px;
+    margin-top: 10px;
+    margin-bottom: 0px;
   }
   button, input{
     border: none;
@@ -41,12 +52,20 @@ body{
     font-weight: bolder;
   }
   
-  .label-section{
-    margin: 30px;
-  }
-  
   .session-section{
    margin: 25px;
-   
+   text-align: center;
+  }
+  .session-section h2{
+    font-size: 40px;
   }
   
+  .timer-buttons{
+    padding: 20px;
+
+  }
+footer {
+  text-align: right;
+  margin-top: 60px;
+  color: white;
+}

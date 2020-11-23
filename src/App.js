@@ -104,31 +104,39 @@ const App = () => {
     <div className="container" id="clock">
       <h1>🍅Pomodoro Clock🍅</h1>
       <div className="row">
-        <div className="col-md-6">
+        <div className="length">
           <h2>BREAK LENGTH</h2>
-          <input onClick={onBreakDecreClick} type="button" value="-" />
-          <h3>{breakTime}</h3>
-          <input onClick={onBreakIncreClick} type="button" value="+" />
+          <div className="length-control">
+            <input onClick={onBreakDecreClick} type="button" value="-" />
+            <h3>{breakTime}</h3>
+            <input onClick={onBreakIncreClick} type="button" value="+" />
+          </div>
         </div>
-        <div className="col-md-6">
+        <div className="length">
           <h2>SESSION LENGTH</h2>
-          <input onClick={onSessDecreClick} type="button" value="-" />
-          <h3>{sessionTime}</h3>
-          <input onClick={onSessIncreClick} type="button" value="+" />
+          <div className="length-control">
+            <input onClick={onSessDecreClick} type="button" value="-" />
+            <h3>{sessionTime}</h3>
+            <input onClick={onSessIncreClick} type="button" value="+" />
+          </div>
         </div>
       </div>
       <div className="session-section">
         <div>
           <h2>{timerType}</h2>
           <h1>{toMMSS(timeLeft)}</h1>
-          <button onClick={onChangePause} id="start-pause">
-            {pause ? " START " : " PAUSE "}
-          </button>
-          <button onClick={onResetClick} id="reset">
-            RESET
-          </button>
+          <div className="timer-buttons">
+            <button onClick={onChangePause} id="start-pause">
+              {pause ? " START " : " PAUSE "}
+            </button>
+            <button onClick={onResetClick} id="reset">
+              RESET
+          </button></div>
         </div>
       </div>
+      
+        <footer> POIANA KIM &copy;  {new Date().getFullYear()} POMODORO CLOCK </footer>
+    
       <audio
         id="beep"
         src="https://raw.githubusercontent.com/freeCodeCamp/cdn/master/build/testable-projects-fcc/audio/BeepSound.wav"
